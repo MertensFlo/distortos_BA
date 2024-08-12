@@ -1,0 +1,9 @@
+runs:
+  using: composite
+  steps:
+  - name: install cmake
+    shell: bash
+    run: |
+      sudo apt-get -y -qq update
+      sudo apt-get -y -qq install cmake ninja-build
+    

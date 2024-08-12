@@ -1,0 +1,8 @@
+runs:
+  using: composite
+  steps:
+  - name: make test
+    shell: bash
+    run: |
+      cmake -S. -Bbuild -GNinja
+      ./scripts/buildAllConfigurations.sh configurations distortosTest

@@ -1,0 +1,6 @@
+runs:
+  using: composite
+  steps:
+  - name:
+    shell: bash
+    run: arm-none-eabi-gcc -v
