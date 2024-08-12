@@ -1,6 +1,0 @@
-runs:
-  using: composite
-  steps:
-  - name: checkout submodules
-    shell: bash
-    run: git submodule update --init --remote --recursive

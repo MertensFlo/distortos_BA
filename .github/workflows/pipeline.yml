@@ -13,85 +13,21 @@ on:
   workflow_call:
 
 jobs:
-  build-test:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        toolchain:
-        - 14.1.0-240616
-    steps:
-    - uses: actions/checkout@v4
-    - name: Install bleeding-edge-toolchain
-      shell: bash
-      working-directory: /tmp
-      run: |
-        wget --progress=dot:giga https://distortos.org/files/ci/arm-none-eabi-gcc-${{inputs.arm_version}}.tar.xz
-        tar -xf arm-none-eabi-gcc-${{matrix.toolchain}}.tar.xz
-        echo "$(cd arm-none-eabi-gcc-${{matrix.toolchain}}/bin && pwd)" >> $GITHUB_PATH
-    - name: Install Dependencies
-      shell: bash
-      run: |
-        sudo apt update
-        sudo apt install ninja-build
-    - name: Build
-      shell: bash
-      run: ./scripts/buildAllConfigurations.sh configurations distortosTest
-
-  test-board-generator:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - name: Set up Python 3.x
-      uses: actions/setup-python@v5
-      with:
-        python-version: 3.x
-    - name: Install Dependencies
-      shell: bash
-      run: |
-        python -m pip install --upgrade pip
-        pip install jinja2 ruamel.yaml
-    - name: Generate Boards
-      shell: bash
-      run: |
-        for yamlFile in $(/usr/bin/find -L "${GITHUB_WORKSPACE}/source/board" -name '*.yaml')
-        do
-          ${GITHUB_WORKSPACE}/scripts/generateBoard.py ${yamlFile}
-        done
-
-        git add -N .
-        git diff --exit-code
-    - name: Generate "Raw" Boards
-      shell: bash
-      run: |
-        for yamlFile in $(/usr/bin/find -L "${GITHUB_WORKSPACE}/source/chip" -name '*.yaml')
-        do
-          ${GITHUB_WORKSPACE}/scripts/generateBoard.py ${yamlFile} -o /tmp/$(basename ${yamlFile} .yaml)
-        done
-
-  unit-tests:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - name: Install Dependencies
-      shell: bash
-      run: |
-        sudo apt update
-        sudo apt install gcc-10 g++-10 ninja-build
-    - name: Create Build Environment
-      run: cmake -E make_directory ${{github.workspace}}/output
-    - name: Configure CMake
-      shell: bash
-      working-directory: ${{github.workspace}}/output
-      env:
-        CC:   gcc-10
-        CXX:  g++-10
-      run: cmake -G Ninja ${GITHUB_WORKSPACE}/unit-test
-    - name: Build
-      shell: bash
-      working-directory: ${{github.workspace}}/output
-      run: cmake --build . --target all
-    - name: Run
-      shell: bash
-      working-directory: ${{github.workspace}}/output
-      run: cmake --build . --target run
-
+  call-pipeline:
+    uses: MertensFlo/StateOS_BA/.github/workflows/pipeline.yml@Testing_workflows
+    with:
+      buildSystem: ubuntu-latest
+      workingBranch: Testing_workflows
+      workingRepo: StateOS_BA 
+      workingOrg: MertensFlo
+      callerBranch: dev_github
+      callerRepo: DISTORTOS_BA
+      callerOrg: MertensFlo
+      arm_version: 14.1.0-240616
+      cmake_version: cmake
+      flag_arm: true
+      flag_submodule: false
+      flag_ninja: true
+      example_test: false
+      static_test: false
+      unit_test: false

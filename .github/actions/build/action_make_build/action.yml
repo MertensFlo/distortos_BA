@@ -3,6 +3,8 @@ runs:
   steps:
   - name: make test
     shell: bash
+    if: ${{inputs.flag_ninja}}
     run: |
       cmake -S. -Bbuild -GNinja
-      ./scripts/buildAllConfigurations.sh configurations distortosTest
+  - name: 
+    run: ./scripts/buildAllConfigurations.sh configurations distortosTest

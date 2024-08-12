@@ -2,11 +2,15 @@ inputs:
   arm_version:
     default: 11.3.rel1
     type: string
+  flag_arm:
+    default: false
+    type: boolean
 
 runs:
   using: composite
   steps:
-  - name: set variables
+  - if: ${{inputs.flag_arm}}
+    name: set variables
     shell: bash
     run: |      
       echo "ARM_WGET_PATH=https://distortos.org/files/ci/arm-none-eabi-gcc-${{inputs.arm_version}}.tar.xz" >> $GITHUB_ENV
@@ -14,6 +18,7 @@ runs:
       echo "GPATH="$(cd arm-none-eabi-gcc-${{inputs.arm_version}}/bin && pwd)" >> $GITHUB_ENV
   - name: use variables
     shell: bash
+    if: ${{inputs.flag_arm}}
     working-directory: /tmp
     run: |
       wget --progress=dot:giga ${{env.ARM_WGET_PATH}}
