@@ -10,7 +10,7 @@
 name: Build Test
 
 on:
-  workflow_call:
+  push:
 
 jobs:
   call-pipeline:
