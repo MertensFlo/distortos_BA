@@ -10,7 +10,7 @@
 name: Build Test
 
 on:
-  push:
+  workflow_call:
 
 jobs:
   build-test:
@@ -36,3 +36,4 @@ jobs:
     - name: Build
       shell: bash
       run: ./scripts/buildAllConfigurations.sh configurations distortosTest
+      

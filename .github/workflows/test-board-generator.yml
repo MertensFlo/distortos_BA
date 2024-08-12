@@ -10,7 +10,7 @@
 name: Test Board Generator
 
 on:
-  push:
+  workflow_call:
 
 jobs:
   test-board-generator:
