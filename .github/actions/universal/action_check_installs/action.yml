@@ -9,6 +9,6 @@ runs:
   - run: echo distortos
     shell: bash
   - name: call action +
-    uses: MertensFlo/StateOS_BA/.github/actions/universal/action_check_installs@more_generic_workflow
+    uses: MertensFlo/StateOS_BA/.github/actions/universal/action_check_installs@Testing_workflows
     with:
       flag_arm: ${{inputs.flag_arm}}
