@@ -12,10 +12,10 @@ runs:
     shell: bash
     run: |
       sudo apt-get -y -qq update
-  - if: ${{inputs.flag_ninja && !(inputs.cmake_version=="")}}
-    name: install ${{cmake_version}}
+  - if: ${{inputs.flag_ninja}}
+    name: install ${{inputs.cmake_version}}
     shell: bash
-    run: sudo apt-get -y -qq install ${{cmake_version}} ninja-build
+    run: sudo apt-get -y -qq install ${{inputs.cmake_version}} ninja-build
   - name: test
     shell: bash
     run: |
