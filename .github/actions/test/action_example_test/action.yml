@@ -8,7 +8,7 @@ runs:
       do
         ${GITHUB_WORKSPACE}/scripts/generateBoard.py ${yamlFile}
       done
-
+      echo ----------------------------------------------------------^1
       git add -N .
       git diff --exit-code
   - run: echo -----------------------------------------------------------------------------------
