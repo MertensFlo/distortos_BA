@@ -6,7 +6,7 @@ runs:
   using: composite
   steps:
   - name: call action
-    uses: MertensFlo/StateOS_BA/.github/actions/universal/action_check_installs/action.yml
+    uses: MertensFlo/StateOS_BA/.github/actions/universal/action_check_installs@Testing_workflows
     with:
       flag_ninja: ${{inputs.flag_ninja}}
       cmake_version: false
