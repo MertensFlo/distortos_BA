@@ -13,6 +13,7 @@ runs:
       sparse-checkout: .github/actions/universal/action_check_installs/action.yml
       sparse-checkout-cone-mode: true
   - name: test checkout
+    shell: bash
     run: |
       ls
       cd .github
@@ -24,6 +25,6 @@ runs:
       cd action_check_installs
       ls
 
-  - uses: ref_action/.github/actions/universal/action_check_installs/
+  - uses: ./${{github.action_path}}/.github/actions/universal/action_check_installs/
     with: 
       flag_arm: ${{inputs.flag_arm}}
