@@ -1,7 +1,0 @@
-runs:
-  using: composite
-  steps:
-  - name: make test
-    shell: bash
-    run: |
-      bash ./.stdc++-test.sh

@@ -1,7 +1,21 @@
 runs:
   using: composite
   steps:
-  - name: make test
+  - name: Generate Boards
     shell: bash
     run: |
-      bash ./.example-test.sh
+      for yamlFile in $(/usr/bin/find -L "${GITHUB_WORKSPACE}/source/board" -name '*.yaml')
+      do
+        ${GITHUB_WORKSPACE}/scripts/generateBoard.py ${yamlFile}
+      done
+
+      git add -N .
+      git diff --exit-code
+      
+  - name: Generate "Raw" Boards
+    shell: bash
+    run: |
+      for yamlFile in $(/usr/bin/find -L "${GITHUB_WORKSPACE}/source/chip" -name '*.yaml')
+      do
+        ${GITHUB_WORKSPACE}/scripts/generateBoard.py ${yamlFile} -o /tmp/$(basename ${yamlFile} .yaml)
+      done

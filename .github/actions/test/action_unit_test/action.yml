@@ -1,7 +1,25 @@
 runs:
   using: composite
   steps:
-  - name: make test
+  - name: call action
+    uses: MertensFlo/StateOS_BA/.github/actions/universal/action_install_dependencies@Testing_workflows
+    with:
+      flag_ninja: ${{inputs.flag_ninja}}
+      cmake_version: gcc-10 g++-10
+  - name: Create Build Environment
+    run: cmake -E make_directory ${{github.workspace}}/output
+  - name: Configure CMake
     shell: bash
-    run: |
-      make all -f .unit-test.make
+    working-directory: ${{github.workspace}}/output
+    env:
+      CC:   gcc-10
+      CXX:  g++-10
+    run: cmake -G Ninja ${GITHUB_WORKSPACE}/unit-test
+  - name: Build
+    shell: bash
+    working-directory: ${{github.workspace}}/output
+    run: cmake --build . --target all
+  - name: Run
+    shell: bash
+    working-directory: ${{github.workspace}}/output
+    run: cmake --build . --target run
