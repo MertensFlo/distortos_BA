@@ -25,7 +25,9 @@ jobs:
       callerBranch: dev_github
       callerRepo: DISTORTOS_BA
       callerOrg: MertensFlo
-      arm_version: 14.1.0-240616
+      arm_path: https://distortos.org/files/ci/arm-none-eabi-gcc-14.1.0-240616.tar.xz
+      arm_tar_path: ARM_TAR_PATH=arm-none-eabi-gcc-14.1.0-240616.tar.xz
+      arm_dir_path: (cd arm-none-eabi-gcc-14.1.0-240616/bin && pwd)
       cmake_version: cmake
       flag_arm: true
       flag_submodule: false

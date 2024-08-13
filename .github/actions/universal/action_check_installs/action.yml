@@ -6,6 +6,8 @@ inputs:
 runs:
   using: composite
   steps:
+  - run: echo distortos
+    shell: bash
   - uses: MertensFlo/StateOS_BA/.github/actions/universal/action_check_installs/action.yml
     with:
       flag_arm: ${{inputs.flag_arm}}
