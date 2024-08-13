@@ -21,3 +21,5 @@ runs:
     run: |
       echo test distortos
       ls
+      cd .github
+      ls
