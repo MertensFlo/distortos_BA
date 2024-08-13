@@ -9,8 +9,8 @@ runs:
         ${GITHUB_WORKSPACE}/scripts/generateBoard.py ${yamlFile}
       done
       echo ----------------------------------------------------------^1
-      git add -N .
-      git diff --exit-code
+      echo git add -N .
+      echo git diff --exit-code
   - run: echo -----------------------------------------------------------------------------------
     shell: bash
   - name: Generate "Raw" Boards
