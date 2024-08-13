@@ -6,26 +6,6 @@ inputs:
 runs:
   using: composite
   steps:
-  - name: Checkout actions repo for wanted branch
-    uses: actions/checkout@v4
-    with: 
-      repository: MertensFlo/StateOS_BA
-      ref: Testing_workflows
-      sparse-checkout: .github/actions
-      path: .github/actions/refs
-      sparse-checkout-cone-mode: true
-  - name: test checkout
-    shell: bash
-    run: |
-      echo $PWD
-      ls
-      cd .github
-      ls
-      cd actions
-      ls
-      cd refs
-      ls
-
-  - uses: ..github/actions/refs/.github/actions/universal/action_check_installs/action.yml
+  - uses: MertensFlo/StateOS_BA/.github/actions/universal/action_check_installs/action.yml
     with:
-      flag_arm: false
+      flag_arm: ${{inputs.flag_arm}}
