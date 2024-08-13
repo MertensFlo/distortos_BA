@@ -21,4 +21,3 @@ runs:
     run: |
       echo test distortos
       ls
-      dir
