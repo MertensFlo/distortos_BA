@@ -26,7 +26,8 @@ runs:
       wget --progress=dot:giga https://distortos.org/files/ci/arm-none-eabi-gcc-${{inputs.toolchain}}.tar.xz
       tar -xf arm-none-eabi-gcc-${{inputs.toolchain}}.tar.xz
       echo "$(cd arm-none-eabi-gcc-${{inputs.toolchain}}/bin && pwd)" >> $GITHUB_PATH
-  - if: ${{inputs.flag_arm}} && false
+  - if: false
+  #${{inputs.flag_arm}}
     uses: MertensFlo/StateOS_BA/.github/actions/universal/action_build_specific_commands@Testing_workflows
     with:
       flag_arm: ${{inputs.flag_arm}}

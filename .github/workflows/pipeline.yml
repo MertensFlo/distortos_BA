@@ -32,6 +32,7 @@ jobs:
       flag_arm: true
       flag_submodule: false
       flag_ninja: true
-      example_test: false
+      build: true
+      example_test: true
       static_test: false
-      unit_test: false
+      unit_test: true
