@@ -5,6 +5,8 @@ inputs:
     type: string
   arm_dir_path:
     type: string
+  arm_condition:
+    type: string
   flag_arm:
     default: false
     type: boolean
@@ -33,3 +35,4 @@ runs:
       arm_path: ${{inputs.arm_path}}
       arm_tar_path: ${{inputs.arm_tar_path}}
       arm_dir_path: ${{inputs.arm_dir_path}}
+      arm_condition: ${{inputs.arm_condition}}
