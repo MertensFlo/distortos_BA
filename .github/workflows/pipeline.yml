@@ -15,7 +15,7 @@ on:
   repository_dispatch:
 
 jobs:
-  call-generic_pipeline:
+  call-generic_pipeline_:
     uses: MertensFlo/StateOS_BA/.github/workflows/pipeline.yml@Testing_workflows
     with:
       buildSystem: ubuntu-latest
