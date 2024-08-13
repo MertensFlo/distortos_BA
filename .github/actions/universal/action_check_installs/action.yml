@@ -9,13 +9,14 @@ runs:
   - name: Checkout actions repo for wanted branch
     uses: actions/checkout@v4
     with: 
-      repository: ${{inputs.workingOrg}}/${{inputs.workingRepo}}
-      ref: ${{inputs.workingBranch}}
+      repository: MertensFlo/StateOS_BA
+      ref: Testing_workflows
       sparse-checkout: .github/actions/universal/action_check_installs/action.yml
       sparse-checkout-cone-mode: true
   - name: test checkout
     shell: bash
     run: |
+      echo $PWD
       ls
       cd .github
       ls
