@@ -5,6 +5,25 @@ inputs:
   
 runs:
   steps:
-  - uses: ref_action/.github/actions/universal/action_check_installs
+  - name: Checkout actions repo for wanted branch
+    uses: actions/checkout@v4
+    with: 
+      repository: ${{inputs.workingOrg}}/${{inputs.workingRepo}}
+      ref: ${{inputs.workingBranch}}
+      sparse-checkout: .github/actions/universal/action_check_installs/action.yml
+      sparse-checkout-cone-mode: true
+  - name: test checkout
+    run: |
+      ls
+      cd .github
+      ls
+      cd actions
+      ls
+      cd universal
+      ls
+      cd action_check_installs
+      ls
+
+  - uses: ref_action/.github/actions/universal/action_check_installs/
     with: 
       flag_arm: ${{inputs.flag_arm}}
