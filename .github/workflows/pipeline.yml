@@ -7,7 +7,7 @@
 # distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
 #
 
-name: Build Test
+name: Build distortos
 
 on:
   workflow_call:
