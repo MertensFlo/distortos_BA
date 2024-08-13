@@ -11,7 +11,8 @@ runs:
 
       git add -N .
       git diff --exit-code
-      
+  - run: echo -----------------------------------------------------------------------------------
+    shell: bash
   - name: Generate "Raw" Boards
     shell: bash
     run: |
