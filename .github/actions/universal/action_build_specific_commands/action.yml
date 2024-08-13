@@ -15,7 +15,7 @@ runs:
     run: |      
       echo "ARM_WGET_PATH=https://distortos.org/files/ci/arm-none-eabi-gcc-${{inputs.arm_version}}.tar.xz" >> $GITHUB_ENV
       echo "ARM_TAR_PATH=arm-none-eabi-gcc-${{inputs.arm_version}}.tar.xz" >> $GITHUB_ENV
-      echo "GPATH="$(cd arm-none-eabi-gcc-${{inputs.arm_version}}/bin && pwd)" >> $GITHUB_ENV
+      echo "GPATH=$(cd arm-none-eabi-gcc-${{inputs.arm_version}}/bin && pwd)" >> $GITHUB_ENV
   - name: use variables
     shell: bash
     if: ${{inputs.flag_arm}}
