@@ -14,7 +14,7 @@ runs:
   using: composite
   steps: 
   - if: ${{inputs.flag_arm}}
-    uses: MertensFlo/StateOS_BA/.github/actions/universal/action_check_installs@Testing_workflows
+    uses: MertensFlo/StateOS_BA/.github/actions/universal/action_check_installs@more_generic_workflow
     with:
       flag_arm: ${{inputs.flag_arm}}
       arm_path: ${{inputs.arm_path}}
