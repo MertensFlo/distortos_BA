@@ -4,7 +4,7 @@ inputs:
     type: boolean
   
 runs:
-  using: composite
+  uses: composite
   steps:
   - name: Checkout actions repo for wanted branch
     uses: actions/checkout@v4
