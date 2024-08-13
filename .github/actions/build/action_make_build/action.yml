@@ -13,7 +13,6 @@ runs:
       flag_ninja: ${{inputs.flag_ninja}}
       flag_cmake_build: false
     
-
   - name: build all script
     shell: bash
     run: |
