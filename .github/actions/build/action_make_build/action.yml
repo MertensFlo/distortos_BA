@@ -9,7 +9,7 @@ runs:
     uses: MertensFlo/StateOS_BA/.github/actions/build/action_make_build@Testing_workflows
     with:
       flag_ninja: ${{inputs.flag_ninja}}
-      cmake_version: false
+      flag_cmake_version: false
   - name: build all script
     shell: bash
     run: ./scripts/buildAllConfigurations.sh configurations distortosTest
