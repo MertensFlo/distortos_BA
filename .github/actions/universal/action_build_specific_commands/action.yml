@@ -18,9 +18,7 @@ inputs:
 runs:
   using: composite
   steps: 
-  - run: echo ${{inputs.arm_path}}
-    shell: bash
-  - if: false
+  - if: true
     name: Install bleeding-edge-toolchain
     shell: bash
     working-directory: /tmp
@@ -28,7 +26,7 @@ runs:
       wget --progress=dot:giga https://distortos.org/files/ci/arm-none-eabi-gcc-${{inputs.toolchain}}.tar.xz
       tar -xf arm-none-eabi-gcc-${{inputs.toolchain}}.tar.xz
       echo "$(cd arm-none-eabi-gcc-${{inputs.toolchain}}/bin && pwd)" >> $GITHUB_PATH
-  - if: ${{inputs.flag_arm}}
+  - if: ${{inputs.flag_arm}} && false
     uses: MertensFlo/StateOS_BA/.github/actions/universal/action_build_specific_commands@Testing_workflows
     with:
       flag_arm: ${{inputs.flag_arm}}
