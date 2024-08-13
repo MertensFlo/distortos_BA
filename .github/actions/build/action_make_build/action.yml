@@ -17,4 +17,4 @@ runs:
     shell: bash
     run: |
       echo build all configs
-      ./scripts/buildAllConfigurations.sh configurations distortosTest
+      bash ./scripts/buildAllConfigurations.sh configurations distortosTest
