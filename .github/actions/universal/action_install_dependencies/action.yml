@@ -21,6 +21,6 @@ runs:
     run: |
       echo ---------
       echo UNIVERSAL
-      echo --
+      echo -
       cd .github/actions/universal
       ls
