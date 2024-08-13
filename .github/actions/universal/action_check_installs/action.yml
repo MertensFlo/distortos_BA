@@ -4,6 +4,7 @@ inputs:
     type: boolean
   
 runs:
+  using: composite
   steps:
   - name: Checkout actions repo for wanted branch
     uses: actions/checkout@v4
@@ -25,3 +26,7 @@ runs:
       cd action_check_installs
       ls
       echo ${{github.action_path}}
+  - using: ./.github/actions/universal/action_install_dependencies/action.yml
+    with:
+      flag_arm: false
+      arm_version: abc
