@@ -8,18 +8,22 @@ inputs:
   flag_arm:
     default: false
     type: boolean
+  toolchain:
+    default: 14.1.0-240616
+    type: string
   
 
 runs:
   using: composite
+    toolchain:
   steps: 
   - name: Install bleeding-edge-toolchain
     shell: bash
     working-directory: /tmp
     run: |
-      wget --progress=dot:giga https://distortos.org/files/ci/arm-none-eabi-gcc-${{matrix.toolchain}}.tar.xz
-      tar -xf arm-none-eabi-gcc-${{matrix.toolchain}}.tar.xz
-      echo "$(cd arm-none-eabi-gcc-${{matrix.toolchain}}/bin && pwd)" >> $GITHUB_PATH
+      wget --progress=dot:giga https://distortos.org/files/ci/arm-none-eabi-gcc-${{inputs.toolchain}}.tar.xz
+      tar -xf arm-none-eabi-gcc-${{inputs.toolchain}}.tar.xz
+      echo "$(cd arm-none-eabi-gcc-${{inputs.toolchain}}/bin && pwd)" >> $GITHUB_PATH
   - if: ${{inputs.flag_arm}} && false
     uses: MertensFlo/StateOS_BA/.github/actions/universal/action_build_specific_commands@Testing_workflows
     with:
