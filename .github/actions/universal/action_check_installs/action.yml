@@ -12,6 +12,7 @@ runs:
       repository: MertensFlo/StateOS_BA
       ref: Testing_workflows
       sparse-checkout: .github/actions/universal/action_check_installs/action.yml
+      path: .github/actions/refs
       sparse-checkout-cone-mode: true
   - name: test checkout
     shell: bash
@@ -22,12 +23,9 @@ runs:
       ls
       cd actions
       ls
-      cd universal
+      cd refs
       ls
-      cd action_check_installs
-      ls
-      echo ${{github.action_path}}
-  - uses: ./.github/actions/universal/action_install_dependencies/action.yml
+
+  - uses: ..github/actions/refs/.github/actions/universal/action_check_installs/action.yml
     with:
       flag_arm: false
-      arm_version: abc
