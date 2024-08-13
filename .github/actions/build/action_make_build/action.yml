@@ -11,4 +11,5 @@ runs:
       flag_ninja: ${{inputs.flag_ninja}}
       cmake_version: false
   - name: build all script
+    shell: bash
     run: ./scripts/buildAllConfigurations.sh configurations distortosTest
