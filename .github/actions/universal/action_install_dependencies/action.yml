@@ -18,4 +18,4 @@ runs:
     run: sudo apt-get -y -qq install ${{cmake_version}} ninja-build
   - name: test
     shell: bash
-    run: echo test
+    run: echo test distortos
