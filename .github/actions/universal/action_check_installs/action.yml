@@ -4,7 +4,6 @@ inputs:
     type: boolean
   
 runs:
-  using: composite
   steps:
   - uses: ref_action/.github/actions/universal/action_check_installs
     with: 
