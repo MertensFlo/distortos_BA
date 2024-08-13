@@ -1,26 +1,22 @@
 inputs:
-  arm_version:
-    default: 11.3.rel1
+  arm_path:
+    type: string
+  arm_tar_path:
+    type: string
+  arm_dir_path:
     type: string
   flag_arm:
     default: false
     type: boolean
+  
 
 runs:
   using: composite
-  steps:
+  steps: 
   - if: ${{inputs.flag_arm}}
-    name: set variables
-    shell: bash
-    run: |      
-      echo "ARM_WGET_PATH=https://distortos.org/files/ci/arm-none-eabi-gcc-${{inputs.arm_version}}.tar.xz" >> $GITHUB_ENV
-      echo "ARM_TAR_PATH=arm-none-eabi-gcc-${{inputs.arm_version}}.tar.xz" >> $GITHUB_ENV
-      echo "GPATH=$(cd arm-none-eabi-gcc-${{inputs.arm_version}}/bin && pwd)" >> $GITHUB_ENV
-  - name: use variables
-    shell: bash
-    if: ${{inputs.flag_arm}}
-    working-directory: /tmp
-    run: |
-      wget --progress=dot:giga ${{env.ARM_WGET_PATH}}
-      tar -xf ${{env.ARM_TAR_PATH}}
-      echo "${{env.GPATH}}" >> $GITHUB_PATH
+    uses: MertensFlo/StateOS_BA/.github/actions/universal/action_check_installs/action.yml
+    with:
+      flag_arm: ${{inputs.flag_arm}}
+      arm_path: ${{inputs.arm_path}}
+      arm_tar_path: ${{inputs.arm_tar_path}}
+      arm_dir_path: ${{inputs.arm_dir_path}}

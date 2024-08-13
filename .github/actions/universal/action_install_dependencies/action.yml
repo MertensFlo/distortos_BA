@@ -8,19 +8,8 @@ inputs:
 runs:
   using: composite
   steps:
-  - name: apt-get update
-    shell: bash
-    run: |
-      sudo apt-get -y -qq update
-  - if: ${{inputs.flag_ninja}}
-    name: install ${{inputs.cmake_version}}
-    shell: bash
-    run: sudo apt-get -y -qq install ${{inputs.cmake_version}} ninja-build
-  - name: test
-    shell: bash
-    run: |
-      echo ---------
-      echo UNIVERSAL
-      echo --
-      cd .github/actions/universal
-      ls
+  - name: call action
+    uses: MertensFlo/StateOS_BA/.github/actions/universal/action_check_installs/action.yml
+    with:
+      flag_ninja: ${{inputs.flag_ninja}}
+      cmake_version: ${{inputs.cmake_version}}

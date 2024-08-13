@@ -1,10 +1,14 @@
+inputs:
+  flag_ninja:
+    type: boolean
+
 runs:
   using: composite
   steps:
-  - name: make test
-    shell: bash
-    if: ${{inputs.flag_ninja}}
-    run: |
-      cmake -S. -Bbuild -GNinja
+  - name: call action
+    uses: MertensFlo/StateOS_BA/.github/actions/universal/action_check_installs/action.yml
+    with:
+      flag_ninja: ${{inputs.flag_ninja}}
+      cmake_version: false
   - name: 
     run: ./scripts/buildAllConfigurations.sh configurations distortosTest
