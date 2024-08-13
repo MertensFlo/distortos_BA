@@ -16,6 +16,8 @@ inputs:
 runs:
   using: composite
   steps: 
+  - run: echo ${{inputs.arm_path}}
+    shell: bash
   - if: false
     name: Install bleeding-edge-toolchain
     shell: bash
