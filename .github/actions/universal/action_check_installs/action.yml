@@ -24,7 +24,4 @@ runs:
       ls
       cd action_check_installs
       ls
-
-  - uses: ./${{github.action_path}}/.github/actions/universal/action_check_installs/
-    with: 
-      flag_arm: ${{inputs.flag_arm}}
+      echo ${{github.action_path}}
