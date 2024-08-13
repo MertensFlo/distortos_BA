@@ -11,7 +11,7 @@ runs:
     with: 
       repository: MertensFlo/StateOS_BA
       ref: Testing_workflows
-      sparse-checkout: .github/actions/universal/action_check_installs/action.yml
+      sparse-checkout: .github/actions
       path: .github/actions/refs
       sparse-checkout-cone-mode: true
   - name: test checkout
