@@ -13,7 +13,8 @@ inputs:
 runs:
   using: composite
   steps: 
-  - if: ${{inputs.flag_arm}}
+  - 
+  - if: ${{inputs.flag_arm}} && false
     uses: MertensFlo/StateOS_BA/.github/actions/universal/action_build_specific_commands@Testing_workflows
     with:
       flag_arm: ${{inputs.flag_arm}}
