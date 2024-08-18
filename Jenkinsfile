@@ -30,45 +30,20 @@ spec:
             retries 2
         }
     }
-    stages {
-        stage('build') {
-            steps{
-                script{
-                    def buildStage = new StageBuild()
-                    buildStage.build(true, true, true, true, true,true, true, "MertensFlo", "StateOS_BA_Jenkins", "11.3.rel1")  //(boolean git, boolean wget, boolean xz-utils, boolean arm, boolean build-essential, boolean apt-utils,String workingOrg, String workingRepo, String arm_version)
-                }
-            }
-        }
-        stage('example_test') {
-            steps {
-                script{
-                    if(false){
-                        def testStage = new StageTest()
-                        testStage.test(false, true, false, true, "11.3.rel1", "StateOS_BA_Jenkins") //(boolean example_test, boolean static_code, boolean unit_test, boolean arm, String arm_version, String workingRepo)
-                    }
-                }
-            }
-        }
-        stage('static_code_test') {
-            steps {
-                script{
-                    if(false){
-                        def testStage = new StageTest()
-                        testStage.test(false, false, true, true, "11.3.rel1", "StateOS_BA_Jenkins") //(boolean example_test, boolean static_code, boolean unit_test, boolean arm, String arm_version, String workingRepo)
-                    }
-                }
-            }
-        }
-        stage('unit_test') {
-            steps {
-                script{
-                    if(true) {
-                        def testStage = new StageTest()
-                        testStage.test(false, false, true, true, "11.3.rel1", "StateOS_BA_Jenkins") //(boolean example_test, boolean static_code, boolean unit_test, boolean arm, String arm_version, String workingRepo)
-                    }
-                    
-                } 
-            }
-        }
-    }
+    new Pipeline_(this).pipeline_build(
+        true,true,false,true,
+        true,true,true,true,true,true,true,true,
+        "MertensFlo","StateOS_BA_Jenkins",
+        "https://distortos.org/files/ci/arm-none-eabi-gcc-14.1.0-240616.tar.xz",
+        "arm-none-eabi-gcc-14.1.0-240616.tar.xz",
+        "$(cd arm-none-eabi-gcc-14.1.0-240616/bin && pwd)",
+        "-q", "tmp" ,"cmake"
+        )
+    //(Boolean flag_build, Boolean flag_example_test, Boolean flag_static_test, Boolean flag_unit_test, 
+    // Boolean flag_git, Boolean flag_wget, Boolean flag_xz_utils, Boolean flag_arm, Boolean flag_build_essential, Boolean flag_apt_utils, Boolean flag_ninja, Boolean flag_submodule, 
+    // String workingOrg, String workingRepo, 
+    // String arm_path, 
+    // String arm_tar_path, 
+    // String arm_dir_path, 
+    // String arm_condition, String cmake_version)
 }
