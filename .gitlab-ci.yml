@@ -1,6 +1,6 @@
 trigger_job:
     trigger:
-        project: Florian_Mertens/STATEOS_BA_GITLAB
+        project: Florian_Mertens/StateOS_BA_GitLab
         branch: dev_gitlab
         strategy: depend
         forward:
