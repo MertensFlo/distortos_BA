@@ -15,7 +15,7 @@ if [ $FLAG_GIT ]; then
     echo git
 fi
 
-if [ $FLAG_WGET ]; then
+if [ $FLAG_WGET == "true"]; then
     apt-get install -y wget
     echo wget
 fi
