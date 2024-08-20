@@ -2,4 +2,4 @@
   script:
   - echo ---------------------------------------------------------------------------------------
   - echo Distortos_BA
-  - bash ./.gitlab/scripts/install_dependencies.sh $flag_git $flag_wget $flag_xz_utils $flag_arm $flag_build_essential $flag_ninja $flag_python
+  - bash ./.gitlab/scripts/install_dependencies.sh $FLAG_GIT $FLAG_WGET $FLAG_XZ_UTILS $FLAG_ARM $FLAG_BUILD_ESSENTIAL $FLAG_NINJA $FLAG_PHYTON

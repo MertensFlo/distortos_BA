@@ -3,23 +3,23 @@ variables:
     WORKING_BRANCH: "dev"
     WORKING_REPO: "StateOS_BA_GitLab"
     WORKING_ORG: "Florian_Mertens"
+    CALLER_BRANCH: "dev_gitlab"
+    WORKING_REPO: "Distortos_BA"
+    WORKING_ORG: "Florian_Mertens"
     ARM_PATH: "https://developer.arm.com/-/media/Files/downloads/gnu/11.3.rel1/binrel/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi.tar.xz"
     ARM_TAR_PATH: "arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi.tar.xz"
     ARM_DIR_PATH: "$( cd $(git rev-parse --show-cdup); pwd)/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi/bin"
     ARM_CONDITION: "-q"
-    EXAMPLE_TEST: true
-    STATIC_TEST: true
-    UNIT_TEST: true
-    flag_git: false
-    flag_wget: false
-    flag_xz_utils: false
-    flag_build_essential: false
-    flag_arm: true
-    flag_ninja: true
-    flag_submodule: true
-    flag_example_test: true
-    flag_static_test: false
-    flag_unit_test: true
+    FLAG_GIT: false
+    FLAG_WGET: false
+    FLAG_XZ_UTILS: false
+    FLAG_BUILD_ESSENTIAL: false
+    FLAG_ARM: true
+    FLAG_NINJA: true
+    FLAG_SUBMODULE: true
+    FLAG_EXAMPLE_TEST: true
+    FLAG_STATIC_TEST: false
+    FLAG_UNIT_TEST: true
       
 
 trigger_job:
