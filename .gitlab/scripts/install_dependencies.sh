@@ -12,10 +12,12 @@ echo "script install dependencies"
 apt-get update
 if [ $FLAG_GIT ]; then
     apt-get install -y git
+    echo git
 fi
 
 if [ $FLAG_WGET ]; then
     apt-get install -y wget
+    echo wget
 fi
 
 if [ $FLAG_XZ_UTILS ]; then
