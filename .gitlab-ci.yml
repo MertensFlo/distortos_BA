@@ -4,8 +4,8 @@ variables:
     WORKING_REPO: "StateOS_BA_GitLab"
     WORKING_ORG: "Florian_Mertens"
     CALLER_BRANCH: "dev_gitlab"
-    WORKING_REPO: "Distortos_BA"
-    WORKING_ORG: "Florian_Mertens"
+    CALLER_REPO: "Distortos_BA"
+    CALLER_ORG: "Florian_Mertens"
     ARM_CONDITION: --progress=dot:giga
     ARM_PATH: https://distortos.org/files/ci/arm-none-eabi-gcc-14.1.0-240616.tar.xz
     ARM_TAR_PATH: arm-none-eabi-gcc-14.1.0-240616.tar.xz
