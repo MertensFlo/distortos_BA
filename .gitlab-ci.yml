@@ -1,0 +1,7 @@
+trigger_job:
+    trigger:
+        project: Florian_Mertens/STATEOS_BA
+        branch: dev_gitlab
+        strategy: depend
+        forward:
+            pipeline_variables: true
