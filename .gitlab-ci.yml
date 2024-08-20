@@ -10,10 +10,10 @@ variables:
     EXAMPLE_TEST: true
     STATIC_TEST: true
     UNIT_TEST: true
-    flag_git: true
-    flag_wget: true
-    flag_xz_utils: true
-    flag_build_essential: true
+    flag_git: false
+    flag_wget: false
+    flag_xz_utils: false
+    flag_build_essential: false
     flag_arm: true
     flag_ninja: true
     flag_submodule: true
@@ -24,8 +24,8 @@ variables:
 
 trigger_job:
     trigger:
-      - project: Florian_Mertens/StateOS_BA_GitLab
-        branch: dev_gitlab
+        project: Florian_Mertens/StateOS_BA_GitLab
+        branch: dev
         strategy: depend
         forward:
             pipeline_variables: true
