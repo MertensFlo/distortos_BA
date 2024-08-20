@@ -6,10 +6,10 @@ variables:
     CALLER_BRANCH: "dev_gitlab"
     WORKING_REPO: "Distortos_BA"
     WORKING_ORG: "Florian_Mertens"
-    ARM_PATH: "https://developer.arm.com/-/media/Files/downloads/gnu/11.3.rel1/binrel/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi.tar.xz"
-    ARM_TAR_PATH: "arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi.tar.xz"
-    ARM_DIR_PATH: "$( cd $(git rev-parse --show-cdup); pwd)/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi/bin"
-    ARM_CONDITION: "-q"
+    ARM_CONDITION: --progress=dot:giga
+    ARM_PATH: https://distortos.org/files/ci/arm-none-eabi-gcc-14.1.0-240616.tar.xz
+    ARM_TAR_PATH: arm-none-eabi-gcc-14.1.0-240616.tar.xz
+    ARM_DIR_PATH: "$(cd arm-none-eabi-gcc-14.1.0-240616/bin && pwd)"
     FLAG_GIT: false
     FLAG_WGET: false
     FLAG_XZ_UTILS: false
