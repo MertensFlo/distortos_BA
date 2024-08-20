@@ -1,6 +1,30 @@
+variables:
+    BUILD_SYSTEM: "ubuntu-latest"
+    WORKING_BRANCH: "dev"
+    WORKING_REPO: "StateOS_BA_GitLab"
+    WORKING_ORG: "Florian_Mertens"
+    ARM_PATH: "https://developer.arm.com/-/media/Files/downloads/gnu/11.3.rel1/binrel/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi.tar.xz"
+    ARM_TAR_PATH: "arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi.tar.xz"
+    ARM_DIR_PATH: "$( cd $(git rev-parse --show-cdup); pwd)/arm-gnu-toolchain-11.3.rel1-x86_64-arm-none-eabi/bin"
+    ARM_CONDITION: "-q"
+    EXAMPLE_TEST: true
+    STATIC_TEST: true
+    UNIT_TEST: true
+    flag_git: true
+    flag_wget: true
+    flag_xz_utils: true
+    flag_build_essential: true
+    flag_arm: true
+    flag_ninja: true
+    flag_submodule: true
+    flag_example_test: true
+    flag_static_test: true
+    flag_unit_test: true
+      
+
 trigger_job:
     trigger:
-        project: Florian_Mertens/StateOS_BA_GitLab
+      - project: Florian_Mertens/StateOS_BA_GitLab
         branch: dev_gitlab
         strategy: depend
         forward:
