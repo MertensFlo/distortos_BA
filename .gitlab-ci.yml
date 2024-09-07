@@ -7,7 +7,7 @@ variables:
     CALLER_REPO: "Distortos_BA"
     CALLER_ORG: "Florian_Mertens"
     ARM_CONDITION: --progress=dot:giga
-    ARM_PATH: https://distortos.org/files/ci/arm-none-eabi-gcc-14.1.0-240616.tar.xz
+    ARM_PATH: "https://distortos.org/files/ci/arm-none-eabi-gcc-14.1.0-240616.tar.xz"
     ARM_TAR_PATH: arm-none-eabi-gcc-14.1.0-240616.tar.xz
     ARM_DIR_PATH: "$(cd arm-none-eabi-gcc-14.1.0-240616/bin && pwd)"
     FLAG_GIT: false
@@ -23,9 +23,17 @@ variables:
       
 
 trigger_job:
+    parallel:
+        matrix:
+            - TOOLCHAIN: [13.3.0-240530, 14.1.0-240616]
     trigger:
         project: Florian_Mertens/StateOS_BA_GitLab
         branch: dev
         strategy: depend
         forward:
             pipeline_variables: true
+        variables:
+            ARM_PATH: "https://distortos.org/files/ci/arm-none-eabi-gcc-'$TOOLCHAIN'.tar.xz"
+        	ARM_TAR_PATH: arm-none-eabi-gcc-'$TOOLCHAIN'.tar.xz
+            ARM_DIR_PATH: "$(cd arm-none-eabi-gcc-'$TOOLCHAIN'/bin && pwd)"
+
