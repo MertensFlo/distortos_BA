@@ -15,6 +15,10 @@ on:
 
 jobs:
   call-generic_pipeline:
+    strategy:
+      matrix:
+        toolchain: [13.3.0-240530, 14.1.0-240616] 
+
     uses: MertensFlo/StateOS_BA/.github/workflows/pipeline.yml@Testing_workflows
     with:
       buildSystem: ubuntu-latest
@@ -25,9 +29,9 @@ jobs:
       callerRepo: DISTORTOS_BA
       callerOrg: MertensFlo
       arm_condition: --progress=dot:giga
-      arm_path: https://distortos.org/files/ci/arm-none-eabi-gcc-14.1.0-240616.tar.xz
-      arm_tar_path: arm-none-eabi-gcc-14.1.0-240616.tar.xz
-      arm_dir_path: "$(cd arm-none-eabi-gcc-14.1.0-240616/bin && pwd)"
+      arm_path: https://distortos.org/files/ci/arm-none-eabi-gcc-$toolchain.tar.xz
+      arm_tar_path: arm-none-eabi-gcc-$toolchain.tar.xz
+      arm_dir_path: "$(cd arm-none-eabi-gcc-toolchain/bin && pwd)"
       cmake_version: cmake
       flag_arm: true
       flag_submodule: false
