@@ -7,10 +7,14 @@
 # distributed with this file, You can obtain one at https://mozilla.org/MPL/2.0/.
 #
 
+
 name: Build Test
 
 on:
   workflow_dispatch:
+    inputs: 
+      run_flag:
+        type: boolean
   repository_dispatch:
 
 jobs:
@@ -36,7 +40,7 @@ jobs:
       flag_arm: true
       flag_submodule: false
       flag_ninja: true
-      build: false
+      build: true
       example_test: true
       static_test: false
-      unit_test: false
+      unit_test: true
