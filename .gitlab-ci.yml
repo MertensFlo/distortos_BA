@@ -26,14 +26,14 @@ trigger_job:
     parallel:
         matrix:
             - TOOLCHAIN: [13.3.0-240530, 14.1.0-240616]
+    variables:
+        ARM_PATH: "https://distortos.org/files/ci/arm-none-eabi-gcc-${TOOLCHAIN}.tar.xz"
+        ARM_TAR_PATH: arm-none-eabi-gcc-${TOOLCHAIN}.tar.xz
+        ARM_DIR_PATH: "$(cd arm-none-eabi-gcc-${TOOLCHAIN}/bin && pwd)"
     trigger:
         project: Florian_Mertens/StateOS_BA_GitLab
         branch: dev
         strategy: depend
         forward:
             pipeline_variables: true
-        variables:
-            ARM_PATH: "https://distortos.org/files/ci/arm-none-eabi-gcc-'$TOOLCHAIN'.tar.xz"
-        	ARM_TAR_PATH: arm-none-eabi-gcc-'$TOOLCHAIN'.tar.xz
-            ARM_DIR_PATH: "$(cd arm-none-eabi-gcc-'$TOOLCHAIN'/bin && pwd)"
 

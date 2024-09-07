@@ -1,9 +1,10 @@
 .install_pipeline_specific:
   script:
-  - echo ARM_PATH
-  - echo ARM_TAR_PATH
-  - echo ARM_DIR_PATH
+  - echo ${ARM_PATH}
+  - echo ${ARM_TAR_PATH}
+  - echo ${ARM_DIR_PATH}
   - ARM_PATH="https://distortos.org/files/ci/arm-none-eabi-gcc-${TOOLCHAIN}.tar.xz"
   - ARM_TAR_PATH="arm-none-eabi-gcc-${TOOLCHAIN}.tar.xz"
-  - ARM_DIR_PATH="$(cd arm-none-eabi-gcc-'$TOOLCHAIN'/bin && pwd)"
+  - ARM_DIR_PATH="cd arm-none-eabi-gcc-${TOOLCHAIN}/bin && pwd"
   - bash ./.gitlab/scripts/install_pipeline_specific.sh $FLAG_ARM $ARM_PATH $ARM_TAR_PATH $ARM_DIR_PATH $ARM_CONDITION
+  - GITHUB_PATH=${ARM_DIR_PATH}
